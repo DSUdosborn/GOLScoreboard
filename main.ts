@@ -6,6 +6,7 @@ input.onButtonPressed(Button.AB, function () {
     basic.showNumber(TopScore)
 })
 radio.onReceivedString(function (receivedString) {
+    Laststring = receivedString
     ThisChar = ""
     for (let X = 0; X <= 4; X++) {
         for (let Y = 0; Y <= 4; Y++) {
@@ -14,6 +15,7 @@ radio.onReceivedString(function (receivedString) {
             }
         }
     }
+    basic.showString(Laststring)
     basic.showLeds(`
         . . . . .
         . . . . .
@@ -38,9 +40,18 @@ radio.onReceivedValue(function (name, value) {
 let highScore = 0
 let ThisChar = ""
 let Player = ""
+let Laststring = ""
 let TopPlayer = ""
 let TopScore = 0
 radio.setGroup(12)
 radio.setTransmitPower(7)
 TopScore = 0
 TopPlayer = ""
+let Screen = images.createImage(`
+    . . . . .
+    . . . . .
+    . . . . .
+    . . . . .
+    . . . . .
+    `)
+Laststring = ""
