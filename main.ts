@@ -5,6 +5,23 @@ input.onButtonPressed(Button.AB, function () {
     basic.showString(TopPlayer)
     basic.showNumber(TopScore)
 })
+radio.onReceivedString(function (receivedString) {
+    ThisChar = ""
+    for (let X = 0; X <= 4; X++) {
+        for (let Y = 0; Y <= 4; Y++) {
+            if (receivedString.charAt(X * 4 + Y) == "1") {
+                led.plot(X, Y)
+            }
+        }
+    }
+    basic.showLeds(`
+        . . . . .
+        . . . . .
+        . . . . .
+        . . . . .
+        . . . . .
+        `)
+})
 input.onButtonPressed(Button.B, function () {
     basic.showNumber(highScore)
 })
@@ -19,6 +36,7 @@ radio.onReceivedValue(function (name, value) {
     basic.showNumber(TopScore)
 })
 let highScore = 0
+let ThisChar = ""
 let Player = ""
 let TopPlayer = ""
 let TopScore = 0
